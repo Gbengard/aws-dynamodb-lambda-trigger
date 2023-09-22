@@ -44,7 +44,7 @@ Now, let's populate the `baby-adoption` table with babies:
 
 2. Click on "Actions" and select "Create item."
 
-![Untitled](/images/Untitled.jpg)
+![Untitled](/images/Untitled.png)
 
 3. Set the `babyID` **Value** to "baby0001".
 
