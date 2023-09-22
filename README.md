@@ -66,21 +66,21 @@ To demonstrate the effectiveness of the global secondary index, follow these ste
 
 1. Go to the "Explore table items" section.
 
-![Untitled](/images/Untitled 1.jpg)
+![Untitled](/images/Untitled1.jpg)
 
 2. In the "Scan or query items" tab, select the **Query** option.
 
 3. Change the **Index** to "adopted-index" and search for the value "true" in the partition key.
 
-![Untitled](/images/Untitled 2.jpg)
+![Untitled](/images/Untitled2.png)
 
 4. This search for "true" will yield no results (assuming all baby records have "adopted: false").
 
-![Untitled](/images/Untitled 3.jpg)
+![Untitled](/images/Untitled3.png)
 
 5. If you search for "false," it will retrieve all babies that have not been adopted.
 
-![Untitled](/images/Untitled 4.jpg)
+![Untitled](/images/Untitled4.png)
 
 Querying utilizes indexes, making it more efficient and cost-effective. Without the secondary index, scanning the table would be necessary to identify adopted and non-adopted babies. This scanning process involves iterating over every record in DynamoDB, which can be expensive and slow, particularly for tables with a large number of records (thousands or millions).
 
@@ -122,7 +122,7 @@ Side note: While writing this, the confirmation email went to the Spam folder in
 
 15. Your subscription should now be in the Confirmed state, as shown below:
 
-![Untitled](/images/Untitled 5.jpg)
+![Untitled](/images/Untitled5.jpg)
 
 ## Stage 4 - Lambda Creation
 
@@ -172,7 +172,7 @@ This code iterates through the records passed to the Lambda function by DynamoDB
 
 Don't forget to click on "Deploy" to save the function.
 
-![Untitled](/images/Untitled 6.jpg)
+![Untitled](/images/Untitled6.png)
 
 ## Stage 4a - Adding DynamoDB Permissions to the Lambda Role
 
@@ -184,7 +184,7 @@ To incorporate DynamoDB permissions into the Lambda role, follow these steps:
 
 3. Click on the associated role.
 
-![Untitled](/images/Untitled 7.jpg)
+![Untitled](/images/Untitled7.png)
 
 4. Proceed to click on "Add Permissions" and then select "Attach Policies".
 
@@ -194,7 +194,7 @@ To incorporate DynamoDB permissions into the Lambda role, follow these steps:
 
 7. Your role policies should resemble the following example (note that the blurred policy ID will differ in your case, but it has been obscured for simplicity):
 
-![Untitled](/images/Untitled 8.jpg)
+![Untitled](/images/Untitled8.jpg)
 
 This step is necessary to enable the Lambda function to read from the DynamoDB Stream. In a real-world scenario, it is advisable to enforce stricter access controls. However, for this particular case, granting the Lambda full DynamoDB permissions for **all** tables is acceptable.
 
@@ -216,7 +216,7 @@ To enable the DynamoDB Stream, follow these instructions:
 
 7. Click **Create trigger**.
 
-![Untitled](/images/Untitled 9.jpg)
+![Untitled](/images/Untitled9.png)
 
 ## Stage 6 - Testing the Solution
 
@@ -228,15 +228,15 @@ To test the implemented functionality, perform the following steps:
 
 3. You should be able to see the previously created baby items. If they are not visible, click on **Scan** ? **Run**.
 
-![Untitled](/images/Untitled 10.jpg)
+![Untitled](/images/Untitled10.png)
 
 4. Modify one of the "adopted" fields to "true".
 
-![Untitled](/images/Untitled 11.jpg)
+![Untitled](/images/Untitled11.png)
 
 5. After a few seconds, you should receive an email notification confirming the successful adoption of the baby!
 
-![Untitled](/images/Untitled 12.jpg)
+![Untitled](/images/Untitled12.jpg)
 
 ## Stage 7 - Cleanup
 
@@ -249,7 +249,7 @@ Perform the following steps to clean up the project:
    - Type "confirm" into the confirmation field and click "Delete table".
    - Refer to the image below for guidance:
    
-   ![Untitled](/images/Untitled 13.jpg)
+   ![Untitled](/images/Untitled13.png)
 
 2. Lambda Cleanup:
    - Go to the Lambda console at [https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions).
@@ -257,7 +257,7 @@ Perform the following steps to clean up the project:
    - Type "delete" into the confirmation field and click "Delete".
    - Refer to the image below for guidance:
    
-   ![Untitled](/images/Untitled 14.jpg)
+   ![Untitled](/images/Untitled14.png)
 
 3. SNS Cleanup:
    - Access the SNS console at [https://us-east-1.console.aws.amazon.com/sns/v3/home?region=us-east-1#/topics](https://us-east-1.console.aws.amazon.com/sns/v3/home?region=us-east-1#/topics).
@@ -265,14 +265,14 @@ Perform the following steps to clean up the project:
    - Type "delete me" into the confirmation field and click "Delete".
    - Refer to the image below for guidance:
    
-   ![Untitled](/images/Untitled 15.jpg)
+   ![Untitled](/images/Untitled15.png)
 
 4. Subscriptions Cleanup:
    - Navigate to the Subscriptions page and select your subscription.
    - Click on "Delete" and confirm the action by clicking "Delete" again.
    - Refer to the image below for guidance:
    
-   ![Untitled](/images/Untitled 16.jpg)
+   ![Untitled](/images/Untitled16.png)
 
 5. IAM Cleanup:
    - Visit the IAM console at [https://us-east-1.console.aws.amazon.com/iamv2/home?region=us-east-1#/roles](https://us-east-1.console.aws.amazon.com/iamv2/home?region=us-east-1#/roles).
@@ -281,7 +281,7 @@ Perform the following steps to clean up the project:
    - Type "baby-adoption-function-role" into the confirmation field and click "Delete".
    - Refer to the image below for guidance:
    
-   ![Untitled](/images/Untitled 17.jpg)
+   ![Untitled](/images/Untitled17.png)
 
 6. CloudWatch Logs Cleanup:
    - Go to the CloudWatch Logs console at [https://us-east-1.console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups](https://us-east-1.console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups).
@@ -290,5 +290,5 @@ Perform the following steps to clean up the project:
    - Confirm the deletion by clicking "Delete" in the popup.
    - Refer to the image below for guidance:
    
-   ![Untitled](/images/Untitled 18.jpg)
+   ![Untitled](/images/Untitled18.png)
 Once you have completed these steps, the cleanup process will be finished.
